@@ -1,0 +1,1 @@
+mysqldump -u root -e amica > amicacenter.sql

@@ -1,0 +1,64 @@
+.component--card {
+  @apply h-full;
+
+
+  &-image {
+    @apply overflow-hidden;
+  }
+
+  &.no-padding {
+    .card {
+      @apply hover:shadow-none;
+    }
+
+    .partial-copy.in-card {
+      @apply py-inner px-0;
+    }
+  }
+
+  &.category-press-release {
+    .card .eyebrow {
+      @apply flex-1;
+    }
+  }
+}
+
+.card {
+  @apply relative rounded-card border-0
+          flex flex-col h-full brand-outline;
+  &-image {
+    @apply overflow-hidden;
+
+    .cta {
+      @apply flex-1;
+    }
+  }
+
+  &.bg-image {
+    @apply block relative;
+
+    .component--card-image {
+      @apply z-under-content;
+    }
+
+    .component--card-copy {
+      @apply absolute top-0 left-0 relative z-content h-full;
+
+      .eyebrow {
+        @apply flex-1;
+
+        .partial-copy--lead-copy {
+          @apply flex-none;
+        }
+      }
+    }
+  }
+
+  &-image-bg {
+
+  }
+}
+
+.filter-pills.no-filters {
+  & > * { @apply hidden }
+}

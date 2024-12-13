@@ -1,0 +1,13 @@
+@layer base {
+  .accordion-border {
+    @apply absolute left-4 right-4 h-px bg-current z-under-content;
+    width: calc(100% - 2rem);
+    content: "";
+  }
+}
+
+.accordion {
+  &.active:last-child:after {
+    @apply -bottom-half;
+  }
+}

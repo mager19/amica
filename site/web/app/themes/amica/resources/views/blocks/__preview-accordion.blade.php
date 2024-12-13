@@ -1,0 +1,1 @@
+<img src=" @asset('images/preview/accordion.jpg')" width="460px" height="auto">

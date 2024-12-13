@@ -1,0 +1,35 @@
+.partial-copy {
+  &--lead-copy {
+    @apply flex flex-col space-y-min;
+  }
+
+  &--lead {
+    @apply body-1 font-bold mb-0;
+  }
+
+  &.in-card {
+    .eyebrow {
+      @apply flex-1;
+    }
+    &.is-solo .copy--headline {
+      display: flex;
+      flex-direction: column;
+      height: 100%
+    }
+    &.is-repeater {
+      .eyebrow {
+        @apply flex-none;
+      }
+
+      .partial-copy--cta {
+        @apply flex-1 flex items-end;
+      }
+    }
+  }
+}
+
+.list-repeater--list {
+  .partial-copy--copy {
+    @apply body-secondary-1;
+  }
+}

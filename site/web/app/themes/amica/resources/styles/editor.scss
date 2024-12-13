@@ -1,0 +1,210 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+// @import "swiper/css/bundle";
+// @import "swiper/css/effect-fade";
+// @import "swiper/css/a11y";
+
+// @import '~plyr/src/sass/plyr.scss';
+
+@import 'common/global';
+
+@import 'common/colors';
+@import 'common/typography';
+@import 'common/layouts';
+@import 'common/video';
+@import 'common/copy';
+
+@import 'components/accordions';
+@import 'components/cards';
+
+* {
+  color: inherit;
+}
+
+body {
+  font-weight: normal;
+}
+
+.editor-styles-wrapper.block-editor-writing-flow {
+  @import 'common/exclude_dashboard';
+  // @import 'components/forms';
+  .edit-post-visual-editor__post-title-wrapper {
+    @apply mt-half;
+  }
+  .block-editor-inner-blocks {
+    .acf-field .acf-label label, .acf-field .acf-input p { color: black; }
+    a.acf-button, 
+    .acf-link a.button {
+      color: #2271b1 !important;
+      border-color: #2271b1;
+      background: #f6f7f7;
+      vertical-align: top;
+      pointer-events: auto;
+    }
+    .wp-core-ui .button, .wp-core-ui .button-secondary {
+      color: #2271b1;
+      border-color: #2271b1;
+      background: #f6f7f7;
+      vertical-align: top;
+      pointer-events: auto;
+      .wp-media-buttons-icon {
+        color: inherit;
+      }
+    }
+  }
+  .wp-block:not(.is-selected) a {
+    @apply pointer-events-none;
+  }
+  .wp-block a {
+    @apply no-underline;
+  }
+  div.wp-block + p {
+    @apply pt-wide mb-4;
+  }
+  p + div.wp-block {
+    @apply mt-wide;
+  }
+  [data-type="core/paragraph"],
+  [data-type="core/heading"],
+  [data-type="core/quote"],
+  [data-type="core/list"] {
+    @apply fluid-container #{!important}
+  }
+
+  ul, ol {
+    @apply mb-4 list-disc ml-5 last:mb-0;
+  }
+  .card {
+    @apply max-w-none;
+  }
+  section.bg-video {
+    aspect-ratio: 16/9;
+    max-width: 100%;
+  }
+  h3.subhead {
+    @apply mt-0;
+  }
+  .plyr-video iframe {
+    pointer-events: none; /*** FIX THIS **/
+  }
+  blockquote > cite {
+    @apply fluid-container;
+  }
+}
+.plyr-video iframe {
+  @apply w-full;
+}
+
+.wp-core-ui span.button-link {
+  color: var(--text-color);
+}
+
+ul.list-none {
+  list-style: none !important;
+}
+ul.ml-0 {
+  margin-left: 0 !important;
+  padding: 0 !important;
+}
+
+html :where(.edit-post-visual-editor__post-title-wrapper) {
+  h1 {
+    @apply subhead subhead-1 mb-min;
+    @apply ml-container #{!important};
+  }
+}
+
+
+
+.block-editor-default-block-appender__content {
+  @apply fluid-container #{!important}
+}
+
+.block-editor-block-list__layout {
+  @apply font-sans;
+}
+
+.wp-block {
+  &.editor-post-title__block .editor-post-title__input {
+    @apply font-sans #{!important};
+  }
+}
+
+// a.components-button > svg {
+//   color: white;
+// }
+
+h1 {
+  @apply tracking-normal;
+  color: var(--text-color) !important;
+}
+h2 {
+  @apply tracking-normal;
+}
+
+.acf-field {
+  input[type=text],
+  input[type=password],
+  input[type=date],
+  input[type=datetime],
+  input[type=datetime-local],
+  input[type=email],
+  input[type=month],
+  input[type=number],
+  input[type=search],
+  input[type=tel],
+  input[type=time],
+  input[type=url],
+  input[type=week],
+  textarea,
+  select {
+    width: 100%;
+    font-weight: normal;
+    border-color: #8c8f94;
+    // min-width: 300px;
+  }
+}
+
+.acf-oembed .title {
+  overflow-x: scroll;
+}
+
+// Custom layout for block fields in cms
+.block-editor .acf-block-fields {
+  > .acf-field {
+    margin: 0 !important;
+    padding: 1rem !important;
+
+    &.acf-field-group {
+      border-top: 1px solid #e2e4e7 !important;
+    }
+
+    > .acf-label label {
+      font-weight: 700 !important;
+    }
+
+    .acf-input {
+      .acf-fields {
+        border: 0;
+
+        > .acf-field {
+          margin: 0;
+          margin-bottom: 6px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .link-wrap {
+            .link-title,
+            .link-url {
+              @apply block px-0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

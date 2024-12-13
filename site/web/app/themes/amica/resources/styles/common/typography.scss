@@ -1,0 +1,279 @@
+@font-face {
+	font-family: 'Marr Sans Web';
+	src: url('../../fonts/MarrSans-Semibold-Web.woff2') format('woff2'),
+		 url('../../fonts/MarrSans-Semibold-Web.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+	}
+
+@font-face {
+	font-family: 'Marr Sans Web';
+	src: url('../../fonts/MarrSans-Medium-Web.woff2') format('woff2'),
+		 url('../../fonts/MarrSans-Medium-Web.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	}
+
+@font-face {
+	font-family: 'Marr Sans Web';
+	src: url('../../fonts/MarrSans-Regular-Web.woff2') format('woff2'),
+		 url('../../fonts/MarrSans-Regular-Web.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	}
+@font-face {
+	font-family: 'Marr Sans Cond Web';
+	src: url('../../fonts/MarrSansCondensed-Bold-Web.woff2') format('woff2'),
+		 url('../../fonts/MarrSansCondensed-Bold-Web.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+	}
+
+:root {
+  --display-mega-size: 5rem;
+  --display-mega-leading: 0.8;
+  --display-mega-tracking: -0.12rem;
+
+  --display-super-size: 4.5rem;
+  --display-super-leading: 0.9;
+  --display-super-tracking: -0.10375rem;
+  
+  --display-1-size: 3.125rem;
+  --display-1-tracking: -0.07rem;
+  --display-1-leading: 0.9;
+
+  --display-2-size: 2.75rem;
+  --display-2-tracking: -0.0275rem;
+  --display-2-leading: 1.05;
+
+  --display-3-size: 2rem;
+  --display-3-tracking: -0.02rem;
+  --display-3-leading: 0.9;
+
+  --subhead-1-size: 1.25rem;
+  --subhead-1-leading: 1.15;
+  --subhead-1-tracking: -0.03rem;
+
+  --subhead-2-size: 1rem;
+  --subhead-2-leading: 1.2;
+  // --subhead-2-tracking: 0;
+
+  --subhead-3-size: 0.875rem;
+  --subhead-3-leading: 1.2;
+  --subhead-3-tracking: 0;
+
+  --subhead-4-size: 0.75rem;
+  --subhead-4-tracking: 0.0075rem; 
+  --subhead-4-leading: 1.25;
+
+  @screen md {
+    --display-mega-size: 7.625rem;
+    --display-mega-tracking: -0.2025rem;
+    
+    --display-super-size: 6.75rem;
+    --display-super-tracking: -0.145rem;
+    
+    --display-1-size: 4rem;
+    --display-1-tracking: -0.08rem;
+    
+    --display-2-size: 3.5rem;
+    --display-2-tracking: -0.035rem;
+
+    --display-3-size: 2.625rem;
+    --display-3-tracking: -0.02625rem
+    
+    --subhead-1-size: 1.75rem;
+    --subhead-1-tracking: -0.04re;
+    
+    --subhead-2-size: 1.375rem;
+
+    --subhead-3-size: 1.125rem;
+    --subhead-3-tracking: 0.0125rem;
+
+    --subhead-4-size: theme(fontSize.sm);
+    --subhead-4-tracking: 0.00875rem;
+  }
+  @screen lg {
+    --display-mega-size: 13.75rem;
+    --display-mega-tracking: -0.3rem;
+    
+    --display-super-size: 10.75rem;
+    --display-super-tracking: -0.2325rem;
+    --display-super-leading: 0.8;
+    
+    --display-1-size: 6rem;
+    --display-1-tracking: -0.12rem;
+
+    --display-2-size: 5.125rem;
+    --display-2-tracking: -0.1025rem;
+    --display-2-leading: 0.9;
+
+    --display-3-size: 3rem;
+    --display-3-tracking: -0.06rem;
+
+    --subhead-1-size: 2rem;
+    --subhead-1-tracking: -0.05rem;
+
+    --subhead-2-size: 1.5rem;
+
+    --subhead-3-tracking: 0;
+
+    --subhead-4-size: theme(fontSize.base);
+    --subhead-4-tracking: 0.01rem;
+  }
+}
+
+@layer base {
+  .display {
+
+    @apply font-cond font-bold;
+    &-mega {
+      @apply text-display-mega;
+    }
+    &-super {
+      @apply text-display-super;
+    }
+    
+    &-1 {
+      @apply text-display-1;
+    }
+    &-2 {
+      @apply text-display-2;
+    }
+    &-3 {
+      @apply text-display-3;
+    }
+  }
+
+  .subhead {
+    @apply font-bold font-sans;
+
+    &-1 {
+      @apply text-subhead-1;
+    }
+    &-2 {
+      @apply text-subhead-2;
+    }
+    &-3 {
+      @apply text-subhead-3;
+    }
+    &-4 {
+      @apply text-subhead-4;
+    }
+  }
+  
+  .eyebrow {
+    @apply font-sans leading-[1.2];
+
+    @apply text-xs;
+    // line-height: 120%; /* 0.9rem */
+    @apply md:text-sm md:tracking-[0.035rem];
+    @apply lg:font-bold lg:tracking-[0.11rem] lg:tracking-normal;
+  }
+
+  .body {
+    @apply font-sans font-light;
+    &-1 {
+      @apply text-sm leading-[1.2]
+             md:text-[1.125rem] md:leading-[1.4]
+             md:text-md md:leading-[1.4];
+    }
+    &-2 {
+      @apply text-sm leading-[1.3] tracking-[0.0075rem]
+          md:text-sm md:leading-[1.4] md:tracking-[0.00875rem]
+          lg:text-base lg:leading-[1.25] lg:tracking-normal;
+    }
+    &-secondary {
+      &-1 {
+        @apply font-serif font-light;
+        @apply text-sm leading-[1.2]
+            md:text-md
+            lg:text-lg;
+      
+      }
+      &-2 {
+        @apply font-serif font-light;
+        @apply text-md leading-[1.2];
+      }
+    }
+  }
+
+  .ui-text {
+    @apply font-sans text-sm leading-[1.25] tracking-[0.00875rem];
+  }
+
+  .nav-link {
+    @apply subhead subhead-3 flex
+           min-h-0
+        lg:min-h-button-height lg:h-full;;
+  }
+
+  .sub-nav-link {
+    @apply subhead subhead-4 flex;
+  }
+
+  .button {
+    @apply inline-block no-underline font-semibold font-sans body-2 max-h-button-height
+           p-button text-center border focus-state
+           transition-colors cursor-pointer brand-outline
+           hover:transition-colors
+           active:transition-opacity;
+    @apply button-solid;
+    &.mobile-hide-text .text {
+      @apply sr-only md:not-sr-only;
+    }
+    &.button-icon {
+      svg {
+        path {
+          @apply transition-all;
+        }
+      }
+    }
+  }
+  .button-disabled {
+    @apply cursor-default border-gray-10 text-gray-10 hover:border-gray-10 hover:text-gray-10 hover:bg-inherit;
+  }
+  .button-small {
+    --button-padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+  .button-link {
+    @apply inline-block text-var-link body-1 leading-normal underline underline-offset-4
+           transition-colors  outline-var-link outline-offset-[.25rem]
+           hover:text-var-hover-color 
+           group-hover:text-var-hover-color group-hover:border-b-var-hover-color
+            active:text-var-link
+            group-active:text-var-link ;
+    @apply @card:gap-[.1rem] #{!important};
+           
+    &.button-icon {
+      @apply font-bold border-b-transparent border-b-2 no-underline
+             transition-colors
+             underline-border;
+    } 
+  }
+  .button-icon {
+    @apply inline-flex items-center gap-min justify-center;
+      svg {
+        @apply text-inherit hover:text-inherit;
+      }
+  }
+  dt {
+    @apply font-bold;
+  }
+  dd {
+    @apply mb-6 last:mb-0;
+  }
+  .brand-outline {
+    @apply outline-var-btn-outline outline-offset-[.25rem]
+          active:outline-var-btn-outline-active;
+  }
+}
+
+.post-content p {
+  @apply body-1;
+}
+
+button.dropdown {
+  @apply focus-state;
+}

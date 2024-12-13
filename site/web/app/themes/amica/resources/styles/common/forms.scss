@@ -1,0 +1,510 @@
+@layer base {
+  .input {
+    @apply transition-colors w-full h-auto rounded-none subhead subhead-4 p-button 
+      bg-white placeholder:text-dark placeholder:font-normal
+      appearance-none 
+      border border-2 border-var-text
+      active:text-var-link active:border-var-link
+      focus:text-var-link focus:border-var-link focus:outline-0 focus:bg-var-background focus:mix-blend-normal;
+  }
+  .label {
+    @apply text-var-text mt-0 subhead subhead-3 mb-2 lg:mb-3 block;
+  }
+  .textarea { 
+    @apply transition-colors h-auto subhead subhead-4 p-3
+      bg-white border-2 border-var-text placeholder:text-dark
+      w-full appearance-none 
+      active:text-var-link active:border-var-link
+      focus:text-var-link focus:border-var-link focus:outline-0;
+  }
+  .select {
+    @apply transition-colors  border-2 border-var-text p-2 rounded-none
+      placeholder:text-var-text w-auto appearance-none
+      active:text-var-link active:border-var-link
+      focus:text-var-link focus:border-var-link focus:outline-0;
+
+      @apply bg-[url('../images/icons/arrow-down.svg')] bg-no-repeat bg-[center_right_0.5rem];
+  }
+  .radio-wrapper {
+    @apply mb-4;
+  }
+
+  .checkbox,
+  .radio {
+    @apply appearance-none relative
+      border-2 border-black w-6 h-6
+      hover:cursor-pointer
+      after:block after:content-[''] after:absolute checked:after:bg-black after:w-4 after:h-4 after:left-[2px] after:top-[2px]
+      ;
+  }
+
+  .radio {
+    @apply rounded-full after:rounded-full;
+  }
+  .error-message {
+    @apply subhead subhead-2 color-red pb-4;
+  }
+  .required-marker {
+    @apply ml-0.5 text-var-text;
+    ;
+  }
+  .validation_message {
+    @apply eyebrow text-red;
+  }
+  .moving-label--empty {
+    @apply transition-all bottom-[calc(-1*var(--label-height))] text-base;
+    transition-property: bottom, font-size;
+    cursor: text;
+    pointer-events: none;
+  }
+  .moving-label--touched {
+    @apply transition-all bottom-0 text-sm;
+    transition-property: bottom, font-size;
+    position: relative;
+  }
+
+}
+
+input[type="submit"], button[type="submit"] {
+  @apply button;
+}
+
+.form--form .partial-copy--copy {
+  @apply body-2;
+}
+input::placeholder,
+textarea::placeholder {
+  @apply color-dark subhead subhead-4 font-medium;
+}
+
+.at.ngp-form, form {
+  input[type=color],
+  input[type=date],
+  input[type=datetime],
+  input[type=datetime-local],
+  input[type=email],
+  input[type=month],
+  input[type=number],
+  input[type=password],
+  input[type=url],
+  input[type=week],
+  input[type=search],
+  input[type=tel],
+  input[type=text],
+  input[type=time],
+  input[type=week],
+  input[type=url] {
+    @apply input;
+  }
+
+  textarea {
+    @apply textarea;
+  }
+  select {
+    @apply select;
+  }
+
+  input[type="radio"] {
+    @apply radio;
+  }
+
+  input[type="checkbox"] {
+    @apply checkbox;
+  }
+}
+
+fieldset { 
+  & > input[type="text"] {
+    @apply pr-0;
+  }
+  & > button {
+    @apply border border-l-0 #{!important};
+  }
+}
+
+// Gravity Forms
+.gform_wrapper.gravity-theme {
+  form {
+    @apply mb-0;
+  }
+  
+  .gsection_title {
+    @apply subhead subhead-2;
+  }
+  
+  .gfield_label {
+    @apply label;
+  }
+
+  .gform_submission_error {
+    @apply error-message;
+  }
+  .gfield_error {
+    .gfield_label {
+      @apply color-red;
+    }
+
+    input,
+    select,
+    textarea {
+      @apply color-red;
+    }
+  }
+  .gform-field-label {
+    @apply label;
+  }
+  .gchoice {
+    @apply flex items-center;
+
+    .gform-field-label {
+      @apply mt-0 mb-0 font-normal body-1 max-w-full pl-2 hover:cursor-pointer;
+    }
+  }
+  .gfield--type-name input[type=text],
+  .gfield--type-phone input,
+  .gfield--type-email input[type=email],
+  .gfield--type-text input[type=text] {
+    @apply input;
+    @apply p-button leading-[1.25] #{!important}
+  }
+  .gfield--type-textarea textarea { 
+    @apply textarea;
+  }
+
+  .gfield--type-select select {
+    @apply select;
+  }
+
+  .gfield--type-number {
+    @apply col-span-full sm:col-span-4 lg:col-span-6 #{!important};
+  }
+
+  .gfield_checkbox {
+    @apply flex flex-col space-y-1;
+  }
+
+  .gfield_radio {
+    @apply radio-wrapper;
+    @apply flex gap-x-full gap-y-min flex-wrap;
+    li {
+      input[type="radio"] {
+        @apply radio;
+      }
+    }
+
+    .gform-field-label {
+      @apply leading-[1.5];
+    }
+  }
+  .gform-body > .gform_fields {
+    @apply gap-y-inner;
+  }
+  .gform_fields {
+    .headline > strong {
+      @apply subhead subhead-1 inline-block;
+    }
+  }
+  .gfield_required {
+    @apply required-marker;
+  }
+  .gfield--type-html {
+    flex: 0 0 auto;
+  }
+
+  .gform_button {
+    @apply button;
+  }
+
+  .gform_footer {
+    @apply flex justify-center items-center pt-inner;
+  }
+  
+  .gfield_description {
+    @apply text-sm;
+  }
+
+  .ginput_complex {
+    @apply flex flex-wrap gap-y-inner mb-0 justify-between gap-4;
+
+    .gform-grid-col--size-auto {
+      @apply flex-1;
+    }
+  }
+
+  // .ginput_complex.gf_name_has_2 {
+  //   @apply flex flex-wrap gap-y-inner mb-0;
+  //   span {
+  //     @apply mb-0;
+  //   }
+  //   > .name_first,
+  //   > .name_last {
+  //     // @apply relative w-full;
+  //     @screen md {
+  //       // @apply flex-1/2 max-w-1/2;
+  //     }
+  //   }
+  // }
+  .gfield_validation_message {
+    @apply validation_message;
+  }
+
+  .gform_confirmation_message {
+    @apply subhead subhead-1;
+  }
+}
+
+.inline-form {
+  .mixed-column-form {
+    @screen lg {
+      @apply grid-cols-[repeat(auto-fit,minmax(0px,auto))];
+    }
+  }
+}
+.mixed-column-form {
+  @apply w-full text-left grid gap-inner;
+  @apply max-w-full #{!important};
+  .wrapperContainer {
+    &.lp-form-header, & {
+      @apply hidden;
+    }
+  }
+  .lp-required {
+    color: var(--text-color) !important;
+  }
+  [data-editorblocktype="Field-text"] {
+    @apply block;
+    & + .wrapperContainer {
+      @apply block;
+    }
+  }
+  [data-editorblocktype=SubmitButtonBlock] {
+    @apply flex justify-end items-center w-min;
+    button {
+      @apply button leading-none;
+    }
+  }
+  [data-editorblocktype=ResetButtonBlock] {
+    @apply hidden;
+  }
+}
+
+.form-input-svg {
+  @apply pointer-events-none absolute top-1/2 transform -translate-y-1/2 left-3;
+}
+.form-input-svg + input {
+  @apply py-3 px-4 appearance-none w-full block pl-14 focus:outline-none;
+}
+
+div[data-form-block-id] .onFormSubmittedFeedback {
+  @apply w-auto #{!important};
+
+  .onFormSubmittedFeedbackIcon {
+      @apply hidden #{!important};
+  }
+
+  .onFormSubmittedFeedbackMessage {
+      @apply font-sans p-0 text-var-text #{!important};
+      @apply display #{!important};
+  }
+
+  button.onFormSubmittedFeedbackButton.onFormSubmittedFeedbackButtonSuccess {
+      @apply hidden #{!important};
+  }
+}
+
+// EveryAction
+.at.ngp-form {
+  @apply mx-0 text-center body body-2;
+  label {
+    @apply label;
+    small {
+      @apply required-marker;
+    }
+  }
+
+  section.at-inner {
+    @apply bg-var-background py-0;
+    
+    .at-row {
+      @apply flex flex-col justify-start;
+      label {
+        @apply text-var-text;
+      }
+      & > [class^=at-] {
+        @apply mx-0 flex-none;
+      }
+    }
+  }
+
+  header.at-title {
+    @apply subhead subhead-2 text-var-text;
+  }
+  
+  header.at-title, 
+  fieldset.at-fieldset {
+    @apply p-0 m-0 mt-4 lg:mt-8 #{!important};
+  }
+
+  form {
+    @apply w-full text-left;
+  }
+
+  // steps
+  .at-steps {
+    @apply flex justify-between gap-2 mt-6 px-0 py-2;
+    @apply rounded-none;
+    // @apply bg-dark text-white;
+    @apply bg-transparent;
+
+    .at-step {
+      @apply border-0 m-0 p-0;
+
+      &.active {
+        > a {
+          @apply button-border;
+        }
+      }
+      // &.active {
+      //   > a {
+      //     @apply bg-white body body-2;
+      //   }
+      // }
+      // & > a:hover {
+      //   @apply bg-bedrock transition-colors;
+      // }
+
+      > a {
+        @apply button button-dark;
+        // @apply flex justify-center items-center bg-white text-center py-4 px-0;
+        @apply flex justify-center items-center text-center py-4 px-0;
+
+        &::before {
+          @apply relative rounded-none transform-none transition-colors;
+          @apply pr-1 top-0 left-0 h-auto w-auto;
+          @apply border-x-0 border-t-0 border-b border-b-current;
+          @apply font-semibold font-sans body-2 #{!important};
+          @apply text-inherit;
+          background: transparent !important;
+        }
+        & > span {
+           @apply text-inherit;
+           @apply border-b border-b-current;
+        }
+      }
+    }
+  }
+
+  .at-check, .at-recipient-info .at-title {
+    @apply mx-0;
+  }
+
+  fieldset.at-fieldset {
+    legend.at-legend {
+      @apply mx-0 pt-min pb-narrow body body-2 text-var-text;
+    }
+
+    .at-fields {
+      @apply bg-transparent;
+
+      label>kbd, .suggestion>kbd {
+        // @apply label;
+      }
+
+      .radios {
+        @apply m-0 mb-4;
+
+        label {
+          @apply mr-4;
+        }
+
+        input[type="radio"] {
+          @apply mb-0;
+        }
+
+        .radio-description {
+          @apply mt-4;
+        }
+      }
+    }
+    input[type="radio"] {
+      @apply accent-bedrock;
+    }
+    label input[type=checkbox]:checked+span:before {
+      @apply bg-bedrock;
+    }
+  }
+
+  .form-item-selectamount {
+    .SelectAmount {
+      .at-radio {
+        .at-radios {
+          .label-amount {
+            @apply border-0;
+            @apply button button-dark;
+            > a {
+              @apply text-inherit bg-inherit;
+              @apply rounded-none h-full;
+            }
+            &:has(input[type=radio]:checked) {
+              @apply button-bedrock;
+            }
+
+            &.label-otheramount {
+              @apply relative;
+
+              .edit-otheramount {
+                @apply absolute top-0 left-0 pl-8 text-[1.25rem] py-2;
+              }
+
+              .label-otheramount-prefix {
+                @apply text-[1.25rem];
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .step-prevNext {
+    @apply p-0;
+
+    .nextStep {
+      @apply button button-bedrock rounded-none;
+      text-shadow: none;
+    }
+  }
+
+  .iti--allow-dropdown input, .iti--allow-dropdown input[type=text], .iti--allow-dropdown input[type=tel], .iti--separate-dial-code input, .iti--separate-dial-code input[type=text], .iti--separate-dial-code input[type=tel] {
+    @apply pl-12;
+  }
+
+  // hide all copy from 
+  // wysiwyg content, for now.
+  .HeaderHtml {
+    @apply hidden;
+  }
+
+  .at-form-submit {
+    @apply p-0;
+    .at-submit.btn-at {
+      @apply m-0 float-none button rounded-none;
+    }
+  }
+
+  .at-text.PersonalUrl {
+    @apply hidden;
+  }
+}
+
+.daf-container #dafdirectdiv {
+  @apply w-full bg-white;
+  .whatThis a {
+    @apply text-left w-auto;
+  }
+  .dafdirectInputAmount {
+    @apply w-full;
+  }
+
+}
+

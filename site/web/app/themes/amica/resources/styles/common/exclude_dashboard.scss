@@ -1,0 +1,24 @@
+@layer base {
+  ul, ol {
+    @apply mb-4 list-disc ml-5 last:mb-0;
+  }
+}
+
+ul {
+  &.nav,
+  &.sub-menu, 
+  &.dropdown-menu, 
+  &.menu-primary,
+  &.social-links,
+  &.swiper-wrapper,
+  &.tribe-events-sub-nav,
+  &.tribe-events-c-subscribe-dropdown__list,
+  &.event-list-single__categories,
+  &.gform_fields,
+  &.gfield_radio {
+    @apply list-none mb-0;
+    &:not(.nav-container) {
+      @apply ml-0;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<svg class="w-6 h-6" aria-hidden="true" focusable="false" role="img"
+  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="transition">
+  <path 
+    class="origin-center transition" stroke="currentColor" fill="currentColor"
+    data-accordion-target="icon"
+    d="M 12 16.664 C 11.658 16.664 11.319 16.534 11.058 16.274 L 4.395 9.61 C 3.874 9.091 3.874 8.247 4.395 7.727 C 4.915 7.205 5.759 7.205 6.278 7.727 L 12 13.45 L 17.722 7.728 C 18.242 7.206 19.085 7.206 19.607 7.728 C 20.126 8.248 20.126 9.091 19.607 9.612 L 12.943 16.275 C 12.682 16.536 12.342 16.664 12 16.664 Z"
+  >
+  </path>
+</svg>

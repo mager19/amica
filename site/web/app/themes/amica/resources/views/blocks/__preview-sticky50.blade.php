@@ -1,0 +1,1 @@
+<img src=" @asset('images/preview/sticky-50.jpg')" width="460px" height="auto">

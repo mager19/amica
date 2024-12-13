@@ -1,0 +1,19 @@
+.site-footer {
+  .footer{
+    a {
+      @apply font-bold;
+    }
+    &-nav--brand {
+      @apply no-underline;
+      .brand {
+        &--logo {
+          @apply block w-full h-auto;
+        }
+      }
+    }
+  }
+}
+
+.otgs-development-site-front-end {
+  @apply hidden;
+}

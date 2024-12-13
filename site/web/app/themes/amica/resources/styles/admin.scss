@@ -1,0 +1,56 @@
+// @import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'utilities/mixins';
+
+.wp-list-table {
+  @apply relative #{!important};
+}
+
+#login h1 a,
+.login h1 a {
+  @apply w-[20rem] h-auto bg-none indent-0;
+}
+
+#adminmenu li.wp-menu-separator {
+  border-bottom: 1px solid #4d4d4d;
+}
+
+.notice.inline {
+  display: inline-block;
+}
+
+// Fix WPML settings panels
+table.fixed {
+  @apply static;
+}
+
+// functions/definitions.php
+.color-options {
+  @apply flex gap-1 flex-wrap;
+  & > p {
+    @apply border border-dark p-1 mb-0;
+  }
+}
+
+#wp-admin-bar-environment {
+  &.bg-bedrock {
+    a {
+      @apply bg-[#C54C18] hover:bg-[#C54C18] text-white hover:text-white #{!important};
+    }
+  }
+  &.bg-verdant {
+    a {
+      @apply bg-[#686732] hover:bg-[#686732] text-white hover:text-white #{!important};
+    }
+  }
+  &.bg-golden {
+    a {
+      @apply bg-[#E5A40B] hover:bg-[#E5A40B] text-black hover:text-black #{!important} ;
+    }
+  }
+  a {
+    @apply capitalize pointer-events-none ;
+  }
+}
+

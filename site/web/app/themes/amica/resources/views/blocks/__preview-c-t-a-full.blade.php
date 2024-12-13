@@ -1,0 +1,1 @@
+<img src=" @asset('images/preview/cta-full.jpg')" width="460px" height="auto">

@@ -1,0 +1,212 @@
+/**
+ * Global
+ */
+:root {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --z-under-content: 9;
+  --z-content: 99;
+  --z-higher-content: 999;
+  --z-header: 9999;
+  --z-above-header: 99999;
+
+  // plyr
+  --plyr-control-padding: 1rem;
+  --plyr-control-spacing: 1rem;
+  --plyr-range-track-height: 2px;
+  --plyr-range-thumb-background: theme('colors.red');
+  // --plyr-range-fill-background: theme('colors.red');
+  // --plyr-video-progress-buffered-background: #ccc;
+  --plyr-video-range-track-background: theme('colors.white');
+  --plyr-range-thumb-height: 1.2rem;
+  --plyr-video-control-background-hover: transparent;
+  // --plyr-video-control-color: theme('colors.white');
+  // --plyr-audio-control-background-hover: transparent;
+
+  --text-color: theme('colors.dark');
+  --background: transparent;
+  --hover-color: theme('colors.dark/50%');
+  --link-color: theme('colors.dark');
+
+  /* Mobile */
+  --header-height: 5rem;
+  --alert-height: 10.75rem;
+  --card-radius: 1rem;
+  --image-radius: 1.75rem;
+  --block-radius: 1.75rem;
+  --button-padding: .75rem;
+  --button-height: 4.25rem;
+  --margins-narrow: 1.5rem; // Set on theme.container.padding
+  --margins-wide: 1.5rem;
+  // --margins-wide: 1.5rem; // Determined by container grid, maybe not needed?
+  --gap-narrow: 1.5rem;
+  --gap-wide: 3rem;
+  --spacing-max: 4rem;
+  --spacing-full: 2.4rem;
+  --spacing-half: 1.125rem;
+  --spacing-inner: 1.125rem;
+  --spacing-min: 0.5rem;
+  --tab-height: 20px;
+
+  --overlay-mega-negative-margin: -30px;
+  --overlay-super-negative-margin: -25px;
+  /* Tablet */
+  @screen md {
+    --header-height: 6rem;
+    --alert-height: 6.75rem;
+    --block-radius: 2.25rem;
+
+    --button-padding: 1rem;
+    --margins-narrow: 4rem; // Set on theme.container.padding
+    --margins-wide: 7rem;
+    // --margins-wide: 7rem; // Determined by container grid, maybe not needed?
+    --spacing-max: 5rem;
+    --spacing-full: 4rem;
+    --spacing-half: 2rem;
+    --spacing-inner: 1.5rem;
+    --tab-height: 28px;
+    --overlay-mega-negative-margin: -40px;
+    --overlay-super-negative-margin: -40px;
+  }
+
+  @screen lg {
+    --block-radius: 3rem;
+    --margins-wide: 18.625rem;
+    --spacing-inner: 2rem;
+    --spacing-half: 2.5rem;
+    --spacing-max: 10rem;
+    --spacing-full: 5rem;
+    --tab-height: 33px;
+    --overlay-mega-negative-margin: -70px;
+    --overlay-super-negative-margin: -55px;
+  }
+  /* Desktop */
+  @screen xxl {
+    --margins-narrow: 5rem; // Set on theme.container.padding
+    // --margins-wide: 18.625rem; // Determined by container grid, maybe not needed?
+  }
+}
+
+* {
+  @apply text-var-text;
+}
+
+body {
+  @apply body body-2 relative;
+}
+
+@layer base {
+  main {
+    @apply bg-white;
+  }
+  p { 
+    @apply text-var-text;
+    @apply mb-4;
+    &:last-child { 
+      @apply mb-0 
+    }
+  }
+
+  h1 {
+    @apply text-var-text display display-1;
+  }
+  h2 {
+    @apply text-var-text display display-2;
+  }
+  h3 {
+    @apply text-var-text subhead subhead-1;
+  }
+  h4 {
+    @apply text-var-text subhead subhead-2;
+  }
+  strong {
+    @apply font-bold;
+  }
+  .underline-border {
+    @apply border-b-2
+           border-var-link
+           hover:border-b-var-hover-color
+           active:border-b-var-link
+           group-active:border-b-var-link;
+  }
+
+  a {
+    @apply text-var-link transition-colors hover:text-var-hover-color 
+           underline underline-offset-2;
+  }
+  a span,
+  span.button-link > *,
+  a svg,
+  button span,
+  button > *,
+  button svg {
+    @apply text-inherit transition-colors;
+    //  hover:transition-colors;
+  }
+  a.card {
+    @apply no-underline;
+  }
+  svg > * {
+    color: currentColor;
+  }
+
+  address {
+    @apply not-italic;
+    & > * {
+      @apply mb-0;
+    }
+
+  }
+
+  dl {
+    @apply grid grid-cols-[auto_1fr] grid-flow-row gap-x-inner;
+    dd {
+      @apply mb-0 body-1;
+    }
+    dt {
+      @apply body-1;
+    }
+  }
+  .opaque {
+    @apply blur-sm;
+  }
+  blockquote {
+    @apply my-inner ml-half pl-inner border-l-4 border-l-gray-5;
+  }
+}
+
+.lock-body-for-mobile-menu {
+  @apply overflow-hidden h-full fixed;
+}
+
+
+/* STANDARD WORDPRESS BLOCK STYLING */
+.wp-block-heading {
+  @apply pt-2 pb-1 md:pt-3 md:pb-2 lg:pt-4 lg:pb-2;
+}
+
+.media {
+  img {
+    @apply rounded-image;
+  }
+}
+
+.partial--folder-tab {
+  &.no-border {
+    --tab-height: 14px;
+
+    @screen md {
+      --tab-height: 20px;
+    }
+
+    @screen lg {
+      --tab-height: 23px;
+    }
+  }
+}
+
+.page-template-template-narrow .main {
+  @apply pb-4 md:pb-8 lg:pb-12;
+}

@@ -1,0 +1,341 @@
+// Hamburger settings
+$hamburger-padding-x: 0.6rem;
+$hamburger-padding-y: 0.6rem;
+$hamburger-layer-width: 2.25rem;
+$hamburger-layer-height: 8px;
+// $hamburger-layer-spacing       : 6px;
+$hamburger-layer-color: var(--text-color);
+$hamburger-layer-border-radius: 0;
+$hamburger-hover-opacity: 0.8;
+$hamburger-active-layer-color  : var(--text-color);
+// $hamburger-active-hover-opacity: $hamburger-hover-opacity;
+
+// To use CSS filters as the hover effect instead of opacity,
+// set $hamburger-hover-use-filter as true and
+// change the value of $hamburger-hover-filter accordingly.
+// $hamburger-hover-use-filter   : false;
+// $hamburger-hover-filter       : opacity(50%);
+// $hamburger-active-hover-filter: $hamburger-hover-filter;
+
+.site-header {
+  --button-height: 2.875rem;
+  @screen lg {
+    --button-height: 3.375rem;
+  }
+
+  @apply w-full transition z-header;
+
+  &.type-fixed {
+    @apply sticky -top-alert;
+  }
+
+  &.type-shy {
+    .page-header--nav {
+      @apply transition-all duration-700;
+    }
+  }
+}
+.site-header--wrapper {
+  @apply w-full bg-transparent transition-all duration-300 ease-in-out;
+}
+
+.site-header--container {
+  @apply lg:fluid-container lg:py-half;
+  @apply grid gap-y-[calc(var(--spacing-half)_-_3.75rem_/_2)] gap-x-inner;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "logo      secondary button"
+                        "primary  primary   primary";
+  @screen lg {
+    grid-template-columns: 1f auto 1fr;
+    grid-template-areas: "logo  secondary secondary"
+                         "logo  primary   primary";
+  }
+  a {
+    text-decoration: none;
+  }
+
+  .site-brand {
+    @apply py-half pl-narrow lg:p-0 z-above-header flex items-center gap-2;
+    grid-area: logo;
+    a { @apply border-none; }
+    .brand--logo {
+      @apply block w-full h-auto max-w-[10rem] md:max-w-[10rem] lg:max-w-[14rem];
+    }
+  }
+  .hamburger {
+    @apply z-above-header relative focus:outline-none focus-visible:ring-2;
+    @apply flex lg:hidden #{!important};
+    @apply rounded-lg h-button-height w-button-height items-center justify-center;
+    @apply self-center mr-narrow;
+    grid-area: button;
+  }
+  .header-scroll-screen { 
+    @apply opacity-0 transition-opacity delay-300 row-span-full col-span-full;
+  }
+  .hamburger.is-active + .header-scroll-screen {
+    @apply place-self-stretch bg-white opacity-100 transition-opacity delay-header
+        lg:hidden;
+    z-index: calc(var(--z-header) + 1);
+    grid-row: 1 / span 1;
+  }
+  .secondary-nav--wrapper {
+    grid-area: secondary
+  }
+
+  .primary-nav--wrapper {
+    grid-area: primary
+  }
+  
+  .site-nav {
+    @apply ml-auto flex gap-4 items-center justify-self-end
+          lg:flex-col lg:gap-6 lg:items-end;
+
+    .nav--primary {
+      @apply fixed inset-0 opacity-0 invisible translate-x-full
+          lg:visible lg:opacity-100 lg:top-auto lg:right-0 lg:z-auto lg:relative lg:translate-x-0;
+
+      .menu {
+        @apply flex flex-col items-end h-full gap-x-inner gap-y-full p-inner overflow-scroll
+                 lg:flex-row lg:justify-center lg:items-center lg:p-0 lg:overflow-visible
+                 lg:gap-2 xxl:gap-3;
+        @apply py-nav lg:py-0 #{!important};
+
+        .menu-cta {
+          @apply inline-flex lg:hidden;
+        }
+
+        .top-menu--link {
+          @apply justify-end items-center border-transparent lg:w-max lg:duration-500
+              lg:justify-center  lg:border-b-2 lg:px-2 xxl:px-3 lg:min-h-[2.25rem];
+          &:hover, &:focus {
+            @apply lg:color-bedrock lg:text-var-text border-var-text lg:duration-500;
+          }
+          &:active, &:active > * {
+            @apply lg:text-bedrock-dark lg:border-bedrock-dark;
+          }
+        }
+
+        .current-menu-item, .current-menu-parent {
+          a {
+            @apply font-bold tracking-normal
+                   border-var-text;
+          }
+        }
+      }
+    }
+
+    .nav--secondary {
+      @apply z-above-header flex;
+      .menu {
+        @apply flex flex-row gap-4 lg:gap-6 lg:items-center;
+        // multlingual fixes
+        .menu-item {
+          @apply hidden md:list-item;
+        }
+        .wpml-ls-item {
+          @apply list-item;
+        }
+      }
+    }
+  }
+
+  .nav {
+    @apply flex flex-col justify-center items-center z-header transition-all
+      lg:flex-row lg:overflow-visible
+    ;
+    .menu {
+      @apply text-center z-0 tracking-wide list-none m-0
+        lg:font-sans lg:items-baseline lg:text-[1.375rem] lg:z-header lg:font-normal;
+
+      .menu-cta {
+        & > a {
+          @apply button button-icon w-full
+                  max-h-button-height min-h-0;
+          &:hover {
+            @apply no-underline
+          }
+        }
+
+        &.icon {
+          a {
+            span {
+              @apply hidden md:block;
+            }
+          }
+        }
+      }
+
+      .menu--dropdown {
+        @apply h-auto lg:h-full;
+        &.top-menu--link {
+          // @apply lg:group-hover:underline lg:group-hover:underline-offset-20 lg:group-hover:decoration-2
+          @apply lg:group-hover:border-var-text;
+        }
+      }
+    }
+
+    // mobile dropdown
+    &.show-nav {
+      @apply visible opacity-100 translate-x-0;
+      @apply bg-white z-header;
+      @apply flex items-end;
+    }
+
+    &.hide-nav {
+      @apply invisible opacity-0 translate-x-full
+          lg:visible lg:opacity-100 lg:translate-x-0;
+    }
+  }
+}
+
+.alt-hover {
+  .site-nav .nav--primary .menu .top-menu--link {
+    &:hover, &:focus {
+      @apply color-dark-hover;
+      // TEST WITH WPML
+    }
+  }
+}
+
+html[lang="es-ES"] {
+  .site-header--container {
+    .site-brand .brand--logo {
+      @apply min-w-[10rem];
+    }
+    .site-nav .nav--primary .menu .top-menu--link {
+          @apply lg:w-full;
+    }
+  }
+  .site-header .nav {
+    .menu .menu-item .menu-cta {
+      @apply md:text-sm xxl:text-base;
+    }
+  }
+  .display {
+    @apply hyphens-auto md:hyphens-manual;
+  }
+}
+
+.nav--primary {
+  .menu-item-has-children {
+    .sub-menu {
+      @apply text-right
+          lg:text-center lg:absolute lg:shadow lg:mt-min lg:bg-white;
+      .menu-item {
+        & > a {
+          @apply lg:bg-white;
+          &:hover, &:focus {
+            @apply lg:bg-dark lg:text-var-text lg:transition-all lg:duration-500;
+          }
+        }
+      }
+    }
+    .sub-menu--link {
+      @apply h-auto p-0 leading-none lg:transition-all lg:duration-500
+          lg:h-full lg:p-button;
+    }
+  }
+}
+
+.nav--secondary {
+  .menu-item-has-children {
+    .sub-menu {
+      @apply text-center absolute shadow;
+      .menu-item {
+        & > a {
+          @apply bg-white;
+          &:hover, &:focus {
+            @apply bg-dark text-var-text transition-all duration-500;
+          }
+        }
+      }
+    }
+    .sub-menu--link {
+      @apply  h-full leading-none transition-all duration-500 p-button;
+    }
+  }
+}
+
+.menu-item-has-children {
+  @apply transition-all relative inline-block;
+  .sub-menu {
+    @apply w-auto max-h-0 scale-y-0 origin-top transition-all duration-500 
+           flex flex-col items-center gap-min shadow-none w-fit pt-1;
+    .menu-item {
+      @apply w-full;
+      & > a {
+        @apply w-full
+      }
+    }
+    .sub-menu--link {
+      @apply sub-nav-link block;
+    }
+    .current-menu-item {
+      @apply lg:bg-dark;
+    }
+  }
+  &:hover,
+  &.open {
+    .sub-menu {
+      @apply max-h-96 scale-y-100 z-10 lg:mt-0;
+
+    }
+  }
+}
+
+.is-active {
+  [data-header-target="logo"] {
+    #graphic {
+      fill: theme('colors.white');
+    }
+    &:hover #graphic {
+      fill: theme('colors.dark/80%');
+    }
+    --hover-color: theme('colors.dark/80%');
+  }
+}
+
+[data-header-type-value="shy"] {
+  &.is-active {
+    @apply fixed h-full;
+    [data-header-target="header"] {
+      @apply h-full;
+    }
+  }
+  &:not(.is-active) {
+    &[data-state='hide'] {
+      @apply pb-nav;
+      #site-header--wrapper {
+        @apply fixed top-0 -translate-y-full;
+      }
+    }
+    &[data-state='top'] {
+      #site-header--wrapper {
+        @apply sticky -top-alert bg-transparent;
+      }
+      .site-header--container {
+        @apply transition-[padding] duration-700
+      }
+    }
+    &[data-state='peek'] {
+      @apply pb-nav;
+      #site-header--wrapper {
+        @apply fixed top-0 translate-y-0 bg-white;
+      }
+
+      .site-header--container {
+        @apply py-3 transition-[padding] duration-700;
+      }
+    }
+  }
+}
+
+header.is-active + main {
+  @apply mt-header;
+}
+
+body.admin-bar .site-header--container .site-nav .nav--primary {
+  @apply top-[32px];
+}

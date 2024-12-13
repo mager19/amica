@@ -1,0 +1,29 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import "swiper/css/bundle";
+@import "swiper/css/effect-fade";
+@import "swiper/css/a11y";
+
+@import '~plyr/src/sass/plyr.scss';
+
+@import 'common/global';
+@import 'common/exclude_dashboard';
+
+@import 'common/typography';
+@import 'common/colors';
+@import 'common/header';
+@import 'common/footer';
+@import 'common/layouts';
+@import 'common/video';
+@import 'common/forms';
+@import 'common/swiper';
+@import 'common/copy';
+
+@import 'components/accordions';
+@import 'components/cards';
+@import 'components/modal';
+@import 'components/filters';
+
+@import "~hamburgers/_sass/hamburgers/hamburgers";

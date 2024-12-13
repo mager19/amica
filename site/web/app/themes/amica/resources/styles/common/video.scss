@@ -1,0 +1,114 @@
+//  plyr settings
+.plyr {
+  &.plyr--paused {
+    .plyr__control--overlaid {
+      @apply opacity-0;
+    }
+
+    &.plyr--stopped {
+      .plyr__control--overlaid {
+        @apply opacity-100;
+      }
+      .plyr__controls {
+        @apply opacity-0 hidden;
+      }
+    }
+  }
+}
+.plyr--video {
+  @apply -my-px overflow-hidden;
+}
+.plyr--video  .plyr__controls {
+  @apply px-8 lg:px-20 xxl:px-28;
+  @apply px-[12%];
+
+  * {
+    stroke: none !important;
+    @apply color-white;
+  }
+}
+
+.plyr__volume {
+  @apply w-auto min-w-fit;
+}
+
+.plyr__control--overlaid {
+  --plyr-control-icon-size: 100px;
+  --plyr-video-control-background-hover: transparent;
+  @apply w-24 bg-[url('../images/play-large.svg')] #{!important}; 
+  @apply bg-no-repeat h-24 bg-center bg-cover rounded-none transition-opacity;
+  @apply focus:opacity-50 focus:outline-dark focus:transition-opacity  #{!important};
+  &:hover {
+    @apply opacity-50 transition-opacity #{!important};
+    @apply bg-[url('../images/play-large.svg')] bg-cover #{!important};
+  }
+         
+
+  svg {
+    @apply hidden;
+  }
+}
+
+.plyr__video-wrapper {
+  margin-top: -1px;
+}
+
+
+.section-video {
+  @apply relative
+      pointer-events-none
+  ; 
+
+
+  &--frame {
+    --frame-corner-size: 1.25rem;
+    --frame-margin: 0.25rem;
+
+    @apply z-content absolute top-0 left-0 right-0 bottom-0
+    w-[90%] h-[calc(100%+6rem)]
+    ml-[5%] mt-[-3rem]
+    pointer-events-none
+    ;
+
+    > svg {
+      @apply w-full h-full relative;
+
+      path,
+      rect {
+        @apply fill-dark;
+      }
+
+      .frame-border {
+        @apply absolute transform;
+
+        &--top {
+          @apply translate-y-0 translate-x-[var(--frame-corner-size)] w-[calc(100%-2.5rem)];
+        }
+
+        &--bottom{
+          @apply translate-y-[-3px] translate-x-[var(--frame-corner-size)] w-[calc(100%-(var(--frame-corner-size)*2))];
+        }
+
+        &--left {
+          @apply translate-y-[var(--frame-corner-size)] h-[calc(100%-(var(--frame-corner-size)*2))];
+        }
+        &--right {
+          @apply translate-y-[var(--frame-corner-size)] translate-x-[-3px] h-[calc(100%-(var(--frame-corner-size)*2))];
+        }
+      }
+    }
+  }
+
+  // &--embed {
+  //   // @apply z-higher-content
+  // }
+}
+
+/** 
+  Vimeo doesn't allow Plyr to eliminate captions, so duplicate captions were showing up (see 
+  https://github.com/sampotts/plyr/issues/877). Proposed solution on the issue thread removes ALL captions.
+  Leaving in only the Vimeo ones is not ideal but currently all that can be done.
+**/
+.plyr__captions { 
+  @apply hidden #{!important};
+}

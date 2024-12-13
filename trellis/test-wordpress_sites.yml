@@ -1,0 +1,10 @@
+---
+- name: Test wordpress_sites variable
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - /Users/mager19/Documents/webserver/amica/trellis/group_vars/production/wordpress_sites.yml
+  tasks:
+    - name: Print wordpress_sites variable
+      debug:
+        msg: "{{ wordpress_sites }}"

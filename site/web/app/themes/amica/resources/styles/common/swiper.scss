@@ -1,0 +1,36 @@
+.swiper--pagination-navigation {
+  @apply gap-min justify-center;
+  & > button {
+    @apply button button-border leading-none;
+    & > svg {
+      @apply aspect-square;
+    }
+  }
+}
+.swiper--pagination-navigation > button {
+  &.swiper-button-disabled, 
+  &.swiper-button-disabled > svg {
+    @apply button-disabled;
+  }
+}
+
+.swiper-pagination- {
+  &bullet {
+    --swiper-pagination-bullet-size: 2.25rem;
+    --swiper-pagination-bullet-inactive-color: white;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    border: 0.2rem solid theme('colors.dark');
+    &-active {
+      --swiper-theme-color: theme('colors.dark');
+    }
+  }
+}
+
+
+.swiper-slide {
+  @apply h-auto;
+}
+
+.swiper-card-slider {
+  @apply lg:overflow-y-visible lg:pb-12;
+}

@@ -1,0 +1,381 @@
+@mixin color-mode(
+  $name, 
+  $background,
+  $background-light,
+  $background-dark,
+  $text-color,
+  $link-color,
+  $hover-color,
+  $horizontal-rule,
+  $shadow,
+  $shadow-active,
+  $card,
+  $button
+) {
+  .bg-#{$name} {
+    background: var(--background);
+    --background: #{$background};
+    --background-light: #{$background-light};
+    --background-dark: #{$background-dark};
+    --text-color: #{$text-color};
+    --link-color: #{$link-color};
+    --hover-color: #{$hover-color};
+    --horizontal-rule: #{$horizontal-rule};
+    --shadow: #{$shadow};
+    --shadow-active: #{$shadow-active};
+    @apply card-#{$card};
+    @apply button-#{$button};
+    &:not(.section--video) + .bg-#{$name} {
+      @apply pt-0;
+      &.grid-half {
+        & > * {
+          @apply lg:pt-half;
+        }
+      }
+    }
+  }
+}
+
+@mixin button-mode(
+  $name, 
+  $btn-solid-fill,
+  $btn-solid-text,
+  $btn-hover-fill,
+  $btn-solid-hover-text,
+  $btn-outline,
+) {
+  .button-#{$name} {
+    --btn-solid-text: #{$btn-solid-text};
+    --btn-solid-fill: #{$btn-solid-fill};
+    --btn-hover-text: #{$btn-solid-hover-text};
+    --btn-hover-fill: #{$btn-hover-fill};
+    --btn-outline: #{$btn-outline};
+  }
+}
+
+@mixin card-mode(
+  $name,
+  $card-background,
+  $card-text,
+  $card-hover-background,
+  $card-hover-text,
+  $shadow,
+  $shadow-active,
+  $button
+) {
+  .card-#{$name} {
+    .card {
+      background: var(--background);
+      --background: #{$card-background};
+      --hover-background: #{$card-hover-background};
+      --text-color: #{$card-text};
+      --link-color: #{$card-text};
+      --hover-color: #{$card-hover-text};
+      @apply button-#{$button};
+    }
+    &.component--card > .card {
+      background: var(--background);
+      --background: #{$card-background};
+      --hover-background: #{$card-hover-background};
+      --text-color: #{$card-text};
+      --link-color: #{$card-text};
+      --hover-color: #{$card-hover-text};
+      @apply button-#{$button};
+    }
+  }
+}
+
+@layer base {
+  @include color-mode(
+    "white", // $name, 
+    "theme(colors.white)", // $background,
+    "theme(colors.white)", // $background-light,
+    "theme(colors.white)", // $background-dark,
+    "theme(colors.dark)", // $text-color,
+    "theme(colors.dark)", // $link-color,
+    "theme(colors.dark/50%)", // $hover-color,
+    "theme(colors.dark/25%)", // $horizontal-rule,
+    "theme(colors.dark/16%)", // $shadow,
+    "theme(colors.dark/24%)", // $shadow-active
+    "dark", // $card
+    "dark", // $button
+  );
+
+  @include button-mode(
+    "white", // $name, 
+    "theme(colors.white)", // $btn-solid-fill,
+    "theme(colors.dark)", // $btn-solid-text,
+    "theme(colors.white/85%)", // $btn-hover-fill,
+    "theme(colors.dark)", // $btn-solid-hover-text,
+    "var(--btn-solid-fill)", // $btn-outline,
+  );
+
+  @include card-mode(
+    "white", // $name,
+    "theme(colors.white)", // $card-background,
+    "theme(colors.dark)", // $card-text,
+    "white", // $card-hover-background,
+    "theme(colors.dark)", // $card-hover-text,
+    "theme(colors.dark/16%)", // $shadow,
+    "theme(colors.dark/24%)", // $shadow-active 
+    "dark", // $button,
+  );
+
+  
+  @include color-mode(
+    "dark", // $name, 
+    "theme('colors.dark')", // $background,
+    "theme('colors.dark')", // $background-light,
+    "theme('colors.dark')", // $background-dark,
+    "theme('colors.white')", // $text-color,
+    "theme('colors.white')", // $link-color,
+    "theme('colors.white/75%')", // $hover-color,
+    "theme('colors.white/75%')", // $horizontal-rule,
+    "theme('colors.white/16%')", // $shadow,
+    "theme('colors.white/24%')", // $shadow-active
+    "white", // $card
+    "white", // $button
+  );
+  
+  @include button-mode(
+    "dark", // $name, 
+    "theme(colors.dark)", // $btn-solid-fill,
+    "theme(colors.white)", // $btn-solid-text,
+    "theme(colors.dark/75%)", // $btn-hover-fill,
+    "theme(colors.white)", // $btn-solid-hover-text,
+    "var(--btn-solid-fill)", // $btn-outline,
+  );
+
+  @include card-mode(
+    "dark", // $name,
+    "theme(colors.dark)", // $card-background,
+    "theme(colors.white)", // $card-text,
+    "theme(colors.dark/75%)", // $card-hover-background,
+    "theme(colors.white/75%)", // $card-hover-text,
+    "theme(colors.dark)", // $shadow,
+    "theme(colors.dark)", // $shadow-active
+    "white", // $button,
+  );
+
+
+  @include color-mode(
+    "bedrock", // $name, 
+    "theme('colors.bedrock.DEFAULT')", // $background,
+    "theme('colors.bedrock.light')", // $background-light,
+    "theme('colors.bedrock.dark')", // $background-dark,
+    "theme(colors.black)", // $text-color,
+    "theme(colors.black)", // $link-color,
+    "theme('colors.black/75%')", // $hover-color,
+    "theme('colors.black/75%')", // $horizontal-rule,
+    "theme('colors.black/16%')", // $shadow,
+    "theme('colors.black/24%')", // $shadow-active
+    "white", // $card
+    "dark", // $button
+  );
+
+  @include card-mode(
+    "bedrock", // $name,
+    "theme(colors.bedrock.DEFAULT)", // $card-background,
+    "theme(colors.black)", // $card-text,
+    "theme(colors.bedrock.DEFAULT/75%)", // $card-hover-background,
+    "theme(colors.black/75%)", // $card-hover-text,
+    "theme(colors.black/16%)", // $shadow,
+    "theme(colors.black/24%)", // $shadow-active 
+    "dark", // $button,
+  );
+  
+  @include button-mode(
+    "bedrock", // $name, 
+    "theme(colors.bedrock.DEFAULT)", // $btn-solid-fill,
+    "theme(colors.black)", // $btn-solid-text,
+    "theme(colors.bedrock.DEFAULT/25%)", // $btn-hover-fill,
+    "theme(colors.black)", // $btn-solid-hover-text,
+    "var(--btn-solid-fill)", // $btn-outline,
+  );
+
+  @include color-mode(
+    "golden", // $name, 
+    "theme('colors.golden.DEFAULT')", // $background,
+    "theme('colors.golden.light')", // $background-light,
+    "theme('colors.golden.dark')", // $background-dark,
+    "theme('colors.dark')", // $text-color,
+    "theme('colors.dark')", // $link-color,
+    "theme('colors.dark/75%')", // $hover-color,
+    "theme('colors.dark/75%')", // $horizontal-rule,
+    "theme('colors.dark/16%')", // $shadow,
+    "theme('colors.dark/24%')", // $shadow-active
+    "white", // $card
+    "dark", // $button
+  );
+
+  @include card-mode(
+    "golden", // $name,
+    "theme(colors.golden.DEFAULT)", // $card-background,
+    "theme(colors.dark)", // $card-text,
+    "theme(colors.golden.DEFAULT/75%)", // $card-hover-background,
+    "theme(colors.dark/75%)", // $card-hover-text,
+    "theme(colors.dark/16%)", // $shadow,
+    "theme(colors.dark/24%)", // $shadow-active 
+    "dark", // $button,
+  );
+  
+
+  @include color-mode(
+    "verdant", // $name, 
+    "theme('colors.verdant.DEFAULT')", // $background,
+    "theme('colors.verdant.light')", // $background-light,
+    "theme('colors.verdant.dark')", // $background-dark,
+    "theme('colors.dark')", // $text-color,
+    "theme('colors.dark')", // $link-color,
+    "theme('colors.dark/75%')", // $hover-color,
+    "theme('colors.dark/75%')", // $horizontal-rule,
+    "theme('colors.dark/16%')", // $shadow,
+    "theme('colors.dark/24%')", // $shadow-active
+    "white", // $card
+    "dark", // $button
+  );
+
+  @include card-mode(
+    "verdant", // $name,
+    "theme(colors.verdant.DEFAULT)", // $card-background,
+    "theme(colors.dark)", // $card-text,
+    "theme(colors.verdant.DEFAULT/75%)", // $card-hover-background,
+    "theme(colors.dark/75%)", // $card-hover-text,
+    "theme(colors.dark/16%)", // $shadow,
+    "theme(colors.dark/24%)", // $shadow-active 
+    "dark", // $button,
+  );
+
+
+  @include color-mode(
+    "transparent", // $name, 
+    "transparent", // $background,
+    "transparent", // $background-light,
+    "transparent", // $background-dark,
+    "inherit", // $text-color,
+    "inherit", // $link-color,
+    "inherit", // $hover-color,
+    "inherit", // $horizontal-rule,
+    "inherit", // $shadow,
+    "inherit", // $shadow-active
+    "white", // $card
+    "dark", // $button
+  );
+
+  .focus-state {
+    @apply focus:outline-2 focus:outline-dark focus:outline-offset-4;
+  }
+
+  .bg {    
+    &-image {
+      --text-color: white;
+      @apply bg-no-repeat bg-cover bg-center text-var-text;
+      @apply color-white;
+      .button-link {
+        @apply button-link-golden;
+      }
+      @apply button-white;
+      @apply card-white;
+    }
+    &-video {
+      --text-color: white;
+      @apply text-var-text;
+      @apply color-white;
+      .display, .eyebrow, .subhead {
+        @apply drop-shadow-2xl;
+      }
+      .button-link {
+        @apply button-link-golden;
+      }
+      @apply button-white;
+      .button {
+        @apply button-solid;
+      }
+    }
+    &-mobile {
+      @apply bg-no-repeat bg-contain;
+      @apply color-white bg-no-repeat;
+      .button-link {
+        @apply button-link-golden;
+      }
+    }
+  }
+
+  .color { 
+    &-white {
+      --text-color: theme(colors.white);
+      --link-color: theme(colors.white);
+    }
+    &-bedrock {
+      --text-color: theme(colors.bedrock.DEFAULT);
+      --link-color: theme(colors.bedrock.DEFAULT);
+    }
+    &-golden {
+      --text-color: theme(colors.golden.DEFAULT);
+      --link-color: theme(colors.golden.DEFAULT);
+    }
+    &-verdant {
+      --text-color: theme(colors.verdant.DEFAULT);
+      --link-color: theme(colors.verdant.DEFAULT);
+    }
+    &-dark {
+      --text-color: theme(colors.dark);
+      --link-color: theme(colors.dark);
+    }
+    &-red {
+      --text-color: theme(colors.red);
+      --link-color: theme(colors.red);
+    }
+    &-green {
+      --text-color: theme(colors.green);
+      --link-color: theme(colors.green);
+    }
+    &-dark-hover {
+      --text-color: theme(colors.dark/75%);
+      --link-color: theme(colors.dark/75%);
+    }
+  }
+
+  .button-link {
+    &-golden {
+      --link-color: theme(colors.golden.DEFAULT);
+      --hover-color: theme(colors.golden.DEFAULT);
+    }
+    &-dark {
+      --link-color: theme(colors.dark);
+    }
+  }
+
+            
+  a.card:not(.card-folder) {
+    @apply transition-card hover:transition-card
+            lg:hover:bg-var-hover-background   lg:hover:text-var-hover-color
+            lg:focus:bg-var-hover-background   lg:focus:text-var-hover-color
+      lg:group-hover:bg-var-hover-background   lg:group-hover:text-var-hover-color
+      lg:group-focus:bg-var-hover-background   lg:group-focus:text-var-hover-color
+      active:hover:shadow-card-active
+    ;
+  }
+
+  .button {
+    &-solid {
+      @apply  bg-var-btn-bg                     text-var-btn-text                     border-var-btn-bg
+        hover:bg-var-btn-hover-fill        hover:text-var-btn-hover-text        hover:border-var-btn-hover-fill
+  group-hover:bg-var-btn-hover-fill  group-hover:text-var-btn-hover-text  group-hover:border-var-btn-hover-fill
+       active:bg-var-btn-hover-fill       active:text-var-btn-hover-text       active:border-var-btn-hover-fill active:opacity-75
+ group-active:bg-var-btn-hover-fill group-active:text-var-btn-hover-text group-active:border-var-btn-hover-fill active:opacity-75
+  ;
+    }
+    &-border {
+      @apply bg-clear                   text-var-btn-outline           border-var-btn-outline
+       hover:bg-var-btn-bg        hover:text-var-btn-text        hover:border-var-btn-bg
+ group-hover:bg-var-btn-bg  group-hover:text-var-btn-text  group-hover:border-var-btn-bg    
+      active:bg-var-btn-bg       active:text-var-btn-text       active:border-var-btn-bg active:opacity-75
+group-active:bg-var-btn-bg group-active:text-var-btn-text group-active:border-var-btn-bg active:opacity-75
+        ;
+    }
+  }
+}
+.overlay.caption {
+  text-shadow: 1px 1px 8px black;
+}

@@ -1,0 +1,20 @@
+.button-filters--button {
+  @apply button-dark;
+}
+
+.dropdown {
+  & > .tab-pane {
+    @apply bg-white z-header absolute
+           transition-all opacity-0;
+
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  & > button.open + .tab-pane {
+    @apply  max-h-[24rem] opacity-100
+           transition-all;
+
+    transform: scaleY(100%);
+    transform-origin: top;
+  }
+}
